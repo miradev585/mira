@@ -65,7 +65,7 @@ svg {
   top: 0;
   z-index: 50;
   display: grid;
-  grid-template-columns: minmax(230px, 1fr) auto 44px;
+  grid-template-columns: minmax(230px, 1fr) auto;
   align-items: center;
   gap: 28px;
   min-height: 78px;
@@ -156,34 +156,10 @@ svg {
   transform: scaleX(1);
 }
 
-.githubButton,
-.footerGithub,
 .downloadButton,
 .roundNav {
   display: inline-grid;
   place-items: center;
-}
-
-.githubButton {
-  width: 42px;
-  height: 42px;
-  border-radius: 999px;
-  color: var(--ink);
-  transition:
-    background 220ms ease,
-    color 220ms ease,
-    transform 220ms ease;
-}
-
-.githubButton svg {
-  width: 23px;
-  height: 23px;
-}
-
-.githubButton:hover {
-  background: var(--soft);
-  color: var(--button);
-  transform: translateY(-1px);
 }
 
 main {
@@ -715,8 +691,8 @@ main {
 .formShell {
   position: relative;
   overflow: hidden;
-  min-height: 520px;
-  padding: 52px 16px 16px;
+  min-height: 448px;
+  padding: 48px 16px 0;
   background:
     linear-gradient(135deg, rgba(230, 242, 255, 0.72), rgba(255, 255, 255, 0.92)),
     var(--white);
@@ -724,9 +700,9 @@ main {
 
 .formShell::after {
   position: absolute;
-  top: 52px;
+  top: 48px;
   right: 16px;
-  bottom: 16px;
+  bottom: 0;
   z-index: 2;
   width: min(42%, 330px);
   border-radius: 0 12px 12px 0;
@@ -743,7 +719,7 @@ main {
   display: flex;
   align-items: center;
   gap: 9px;
-  height: 44px;
+  height: 42px;
   padding: 0 18px;
   border-bottom: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.82);
@@ -783,12 +759,13 @@ main {
   position: relative;
   z-index: 1;
   width: 100%;
-  min-height: 520px;
+  min-height: 490px;
   border: 0;
   border-radius: 12px;
   background: var(--white);
   filter: saturate(0.22) brightness(1.18) contrast(0.98);
   box-shadow: inset 0 0 0 1px rgba(220, 232, 245, 0.8);
+  transform: translateY(-34px);
 }
 
 .techCopy,
@@ -850,7 +827,7 @@ main {
 
 .footer {
   display: grid;
-  grid-template-columns: minmax(220px, 0.8fr) auto minmax(160px, 0.5fr) minmax(180px, 0.5fr);
+  grid-template-columns: minmax(220px, 0.9fr) auto minmax(180px, 0.6fr);
   align-items: center;
   gap: 28px;
   padding-top: 24px;
@@ -881,30 +858,13 @@ main {
 }
 
 .footer nav a,
-.footerGithub,
 .footerMail {
   transition: color 220ms ease;
 }
 
 .footer nav a:hover,
-.footerGithub:hover,
 .footerMail:hover {
   color: var(--button);
-}
-
-.footerGithub {
-  justify-self: end;
-  display: inline-flex;
-  grid-auto-flow: column;
-  gap: 9px;
-  align-items: center;
-  font-size: 13px;
-  font-weight: 800;
-}
-
-.footerGithub svg {
-  width: 20px;
-  height: 20px;
 }
 
 .footerMail {
@@ -948,7 +908,7 @@ main {
 
 @media (max-width: 1080px) {
   .siteHeader {
-    grid-template-columns: 1fr 44px;
+    grid-template-columns: 1fr;
   }
 
   .desktopNav {
@@ -1047,10 +1007,6 @@ main {
 
   .footer nav {
     justify-content: flex-start;
-  }
-
-  .footerGithub {
-    justify-self: start;
   }
 
   .footerMail {

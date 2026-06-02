@@ -2,9 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 
 const navItems = [
   { id: "about", label: "О проекте" },
-  { id: "materials", label: "Материалы" },
+  { id: "materials", label: "Промоматериалы" },
   { id: "presentations", label: "Презентации" },
-  { id: "docs", label: "Документация" },
   { id: "contacts", label: "Контакты" },
 ];
 
@@ -147,9 +146,6 @@ function Header({ activeSection }) {
           </a>
         ))}
       </nav>
-      <a className="githubButton" href="https://github.com/miradev585" target="_blank" rel="noreferrer" aria-label="GitHub">
-        <GithubIcon />
-      </a>
     </header>
   );
 }
@@ -209,11 +205,11 @@ function Materials() {
     <section id="materials" className="materials sectionObserve">
       <div className="sectionHead">
         <div>
-          <h2>Материалы для скачивания</h2>
-          <p>Презентации, инфографика и документация о системе MIRA</p>
+          <h2>Промоматериалы для скачивания</h2>
+          <p>Презентации, инфографика и материалы о системе MIRA</p>
         </div>
         <button className="textArrow" type="button" onClick={() => scroll(1)}>
-          Смотреть все материалы <ArrowRightIcon />
+          Смотреть все промоматериалы <ArrowRightIcon />
         </button>
       </div>
 
@@ -316,7 +312,7 @@ function InfoStrip() {
 
 function TechSection() {
   return (
-    <section id="docs" className="tech sectionObserve">
+    <section id="technologies" className="tech sectionObserve">
       <div className="techCopy">
         <span className="eyebrow">Единый цифровой контур</span>
         <h2>От строительной площадки до управленческого решения</h2>
@@ -382,10 +378,6 @@ function Footer() {
           </a>
         ))}
       </nav>
-      <a className="footerGithub" href="https://github.com/miradev585" target="_blank" rel="noreferrer">
-        <GithubIcon />
-        Мы на GitHub
-      </a>
       <a className="footerMail" href="mailto:miradev585@gmail.com">miradev585@gmail.com</a>
     </footer>
   );
@@ -430,14 +422,6 @@ export default function App() {
       </main>
       <Footer />
     </>
-  );
-}
-
-function GithubIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M12 .7a12 12 0 0 0-3.8 23.4c.6.1.8-.2.8-.6v-2.1c-3.3.7-4-1.4-4-1.4-.5-1.3-1.2-1.7-1.2-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.7 2.6 1.2 3.3.9.1-.7.4-1.2.7-1.5-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6A12 12 0 0 0 12 .7Z" />
-    </svg>
   );
 }
 
