@@ -334,6 +334,18 @@ function TechSection() {
 }
 
 function ContactsSection() {
+  const [formStatus, setFormStatus] = useState("");
+
+  const handleSubmit = () => {
+    setFormStatus("Отправляем заявку...");
+    window.ym?.(109600551, "reachGoal", "contact_form_submit");
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: "contact_form_submit" });
+    window.setTimeout(() => {
+      setFormStatus("Заявка отправлена. Мы свяжемся с вами в ближайшее время.");
+    }, 1200);
+  };
+
   return (
     <section id="contacts" className="contacts sectionObserve">
       <div className="contactsInfo">
@@ -346,19 +358,40 @@ function ContactsSection() {
         </p>
       </div>
       <div className="formShell">
-        <div className="formChrome" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-          <strong>mira.request</strong>
-        </div>
-        <iframe
-          src="https://forms.yandex.ru/u/6a1f1b9702848f393ce44e85?iframe=1"
-          frameBorder="0"
-          name="ya-form-6a1f1b9702848f393ce44e85"
-          title="Форма обратной связи MIRA"
-          width="650"
-        />
+        <form
+          className="leadForm"
+          action="https://forms.yandex.ru/u/6a1f1b9702848f393ce44e85/"
+          method="get"
+          target="ya-form-submit"
+          onSubmit={handleSubmit}
+        >
+          <div className="leadFormHead">
+            <span>mira.request</span>
+            <strong>Заявка на связь</strong>
+          </div>
+          <label>
+            <span>Ваше ФИО</span>
+            <input name="answer_short_text_9008979678324636" type="text" required autoComplete="name" />
+          </label>
+          <label>
+            <span>Какую компанию вы представляете?</span>
+            <input name="answer_short_text_9008979678355752" type="text" required autoComplete="organization" />
+          </label>
+          <label>
+            <span>Как можно с вами связаться?</span>
+            <input name="answer_short_text_9008979678517988" type="text" required autoComplete="email" />
+          </label>
+          <label>
+            <span>Ваш вопрос или предложение</span>
+            <textarea name="answer_short_text_9008979678578786" rows="4" required />
+          </label>
+          <input type="hidden" name="iframe" value="1" />
+          <div className="leadFormFooter">
+            <button type="submit">Отправить</button>
+            <p>{formStatus || "Данные будут отправлены через Яндекс Форму."}</p>
+          </div>
+        </form>
+        <iframe className="hiddenSubmitFrame" name="ya-form-submit" title="Отправка формы MIRA" />
       </div>
     </section>
   );
