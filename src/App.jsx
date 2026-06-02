@@ -3,21 +3,27 @@ import React, { useEffect, useRef, useState } from "react";
 const navItems = [
   { id: "about", label: "О проекте" },
   { id: "materials", label: "Промоматериалы" },
-  { id: "presentations", label: "Презентации" },
   { id: "contacts", label: "Контакты" },
 ];
 
 const materials = [
   {
-    title: "Строительство сегодня",
+    title: "Строительство в мире",
+    text: "Глобальные вызовы и тренды отрасли",
+    file: "Ситуация_в_Мировом_строительстве.png",
+    format: "PNG",
+    size: "1.6 МБ",
+  },
+  {
+    title: "Строительство в России",
     text: "Ключевые вызовы и проблемы отрасли",
     file: "Ситуация в России.png",
     format: "PNG",
     size: "1.4 МБ",
   },
   {
-    title: "Строительство потом",
-    text: "Цифровая трансформация отрасли",
+    title: "Цифровизация отрасли",
+    text: "Переход к данным, аналитике и прозрачному контролю",
     file: "Будущее строительства.png",
     format: "PNG",
     size: "1.4 МБ",
@@ -30,25 +36,18 @@ const materials = [
     size: "2.1 МБ",
   },
   {
-    title: "Архитектура системы",
-    text: "Структура и компоненты платформы",
-    file: "12 месяцев.png",
-    format: "PNG",
-    size: "1.3 МБ",
-  },
-  {
-    title: "Дашборд директора проекта",
-    text: "Аналитика и ключевые метрики проекта",
-    file: "Ситуация_в_Мировом_строительстве.png",
-    format: "PNG",
-    size: "1.6 МБ",
-  },
-  {
-    title: "MIRA сегодня",
+    title: "MIRA сейчас",
     text: "Практический фундамент цифровизации",
     file: "Mira сегодня.png",
     format: "PNG",
     size: "1.4 МБ",
+  },
+  {
+    title: "MIRA через 12 месяцев",
+    text: "План развития и будущая архитектура системы",
+    file: "12 месяцев.png",
+    format: "PNG",
+    size: "1.3 МБ",
   },
 ];
 
@@ -206,7 +205,7 @@ function Materials() {
       <div className="sectionHead">
         <div>
           <h2>Промоматериалы для скачивания</h2>
-          <p>Презентации, инфографика и материалы о системе MIRA</p>
+          <p>Инфографика и материалы о системе MIRA</p>
         </div>
         <button className="textArrow" type="button" onClick={() => scroll(1)}>
           Смотреть все промоматериалы <ArrowRightIcon />
@@ -295,7 +294,7 @@ function InfoStrip() {
   ];
 
   return (
-    <section id="presentations" className="infoStrip sectionObserve">
+    <section id="audience" className="infoStrip sectionObserve">
       {items.map((item) => (
         <article className="infoItem" key={item.label}>
           <Icon name={item.icon} />
