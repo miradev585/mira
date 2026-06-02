@@ -29,7 +29,7 @@ const materials = [
     size: "1.4 МБ",
   },
   {
-    title: "MIRA как проект",
+    title: "✔️ MIRA как проект",
     text: "Концепция и ценностное предложение",
     file: "MIRA промо материал.png",
     format: "PNG",
