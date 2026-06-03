@@ -357,6 +357,9 @@ function MetroTransMostSection() {
         </div>
 
         <div className="mtmostQuote">
+          <div className="quotePortrait">
+            <img src={asset("ildar.jpg")} alt="Ильдар Ильдусович Юсупов" />
+          </div>
           <div className="quoteMark">MIRA</div>
           <blockquote>
             MIRA разрабатывается на базе экспертизы МетроТрансМост - инженерной компании с практическим опытом
@@ -439,6 +442,9 @@ function Footer() {
             {item.label}
           </a>
         ))}
+        <a href="https://mtmost.ru/about/" target="_blank" rel="noreferrer">
+          МетроТрансМост
+        </a>
       </nav>
       <a className="footerMail" href="mailto:miradev585@gmail.com">miradev585@gmail.com</a>
     </footer>
