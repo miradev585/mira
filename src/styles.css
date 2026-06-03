@@ -439,6 +439,8 @@ main {
 }
 
 .materialCard {
+  display: grid;
+  grid-template-rows: 146px 1fr;
   width: 100%;
   min-width: 0;
   overflow: hidden;
@@ -502,13 +504,15 @@ main {
 }
 
 .cardBody {
-  position: relative;
-  min-height: 148px;
+  display: flex;
+  min-height: 172px;
+  flex-direction: column;
+  align-items: flex-start;
   padding: 18px 18px 20px;
 }
 
 .cardBody h3 {
-  max-width: calc(100% - 38px);
+  max-width: 100%;
   margin: 0;
   font-size: 16px;
   font-weight: 800;
@@ -516,7 +520,7 @@ main {
 }
 
 .cardBody p {
-  max-width: calc(100% - 20px);
+  max-width: 100%;
   margin: 8px 0 0;
   color: var(--muted);
   font-size: 13px;
@@ -524,13 +528,11 @@ main {
 }
 
 .expandBadge {
-  position: absolute;
-  right: 16px;
-  bottom: 16px;
   display: inline-flex;
   align-items: center;
   gap: 7px;
   min-height: 34px;
+  margin-top: auto;
   padding: 0 12px;
   border-radius: 10px;
   background: var(--soft);
