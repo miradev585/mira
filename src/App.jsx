@@ -63,7 +63,7 @@ const insightBlocks = [
 ];
 
 const stats = [
-  { value: "70%", label: "меньше ошибок и брака" },
+  { value: "На 70%", label: "меньше ошибок и брака" },
   { value: "30%", label: "экономия времени" },
   { value: "25%", label: "оптимизация затрат" },
   { value: "100%", label: "прозрачность контроля" },
@@ -160,7 +160,7 @@ function Header({ activeSection }) {
             {item.label}
           </a>
         ))}
-        <a className="externalNav" href="https://mtmost.ru/about/" target="_blank" rel="noreferrer">
+        <a className="externalNav" href="#company">
           МетроТрансМост
         </a>
       </nav>
@@ -529,7 +529,7 @@ function Footer() {
             {item.label}
           </a>
         ))}
-        <a href="https://mtmost.ru/about/" target="_blank" rel="noreferrer">
+        <a href="#company">
           МетроТрансМост
         </a>
       </nav>
