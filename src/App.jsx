@@ -502,14 +502,17 @@ function ContactsSection() {
         </div>
         <div className="formFrameBody">
           <iframe
-            className="yandexFormFrame"
-            src="https://forms.yandex.ru/u/6a1f1b9702848f393ce44e85?iframe=1&theme=light"
+            className="googleFormFrame"
+            src="https://docs.google.com/forms/d/e/1FAIpQLScjOkMV-NXUbkzmtbpqIyP9B89OgTfJ3amtwCGKIhwsFHiC0g/viewform?embedded=true"
             frameBorder="0"
-            name="ya-form-6a1f1b9702848f393ce44e85"
             title="Форма обратной связи MIRA"
             width="100%"
-            height="520"
-          />
+            height="882"
+            marginHeight="0"
+            marginWidth="0"
+          >
+            Загрузка…
+          </iframe>
         </div>
       </div>
     </section>
