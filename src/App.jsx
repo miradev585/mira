@@ -144,6 +144,9 @@ function Header({ activeSection }) {
             {item.label}
           </a>
         ))}
+        <a className="externalNav" href="https://mtmost.ru/about/" target="_blank" rel="noreferrer">
+          МетроТрансМост
+        </a>
       </nav>
     </header>
   );
@@ -153,7 +156,7 @@ function Hero() {
   return (
     <section id="about" className="hero sectionObserve">
       <div className="heroScene" aria-hidden="true">
-        <img src={asset("MIRA промо материал.png")} alt="" />
+        <img src={asset("hero-block.png")} alt="" />
       </div>
       <div className="heroSlice" aria-hidden="true" />
 
@@ -332,6 +335,64 @@ function TechSection() {
   );
 }
 
+function MetroTransMostSection() {
+  return (
+    <section id="company" className="mtmost sectionObserve">
+      <div className="mtmostPanel">
+        <div className="mtmostCopy">
+          <span className="eyebrow">Инженерная экспертиза</span>
+          <h2>МетроТрансМост как практическая база MIRA</h2>
+          <p>
+            MIRA создается с опорой на опыт МетроТрансМост — проектной организации, которая с 2013 года работает
+            со сложными инфраструктурными объектами: внеклассными мостами, большепролетными сооружениями,
+            многоуровневыми эстакадами и зданиями уникальной архитектурной формы.
+          </p>
+          <p>
+            В команде компании есть отдел информационного моделирования и BIM-специалисты, поэтому продукт
+            проектируется вокруг реальных BIM-процессов, строительной аналитики и управленческих задач.
+          </p>
+          <a className="mtmostLink" href="https://mtmost.ru/about/" target="_blank" rel="noreferrer">
+            Подробнее о МетроТрансМост <ArrowRightIcon />
+          </a>
+        </div>
+
+        <div className="mtmostQuote">
+          <div className="quoteMark">MIRA</div>
+          <blockquote>
+            MIRA разрабатывается на базе экспертизы МетроТрансМост - инженерной компании с практическим опытом
+            проектирования и реализации сложных инфраструктурных объектов. Это позволяет создавать продукт,
+            который решает реальные управленческие задачи строительства
+          </blockquote>
+          <div className="quoteAuthor">
+            <strong>Ильдар Ильдусович Юсупов</strong>
+            <span>Основатель MIRA</span>
+            <span>Генеральный директор МетроТрансМост</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="mtmostFacts" aria-label="МетроТрансМост в цифрах">
+        <article>
+          <strong>10+</strong>
+          <span>лет на рынке</span>
+        </article>
+        <article>
+          <strong>100+</strong>
+          <span>индивидуальных проектов</span>
+        </article>
+        <article>
+          <strong>20+</strong>
+          <span>регионов России</span>
+        </article>
+        <article>
+          <strong>BIM</strong>
+          <span>отдел информационного моделирования</span>
+        </article>
+      </div>
+    </section>
+  );
+}
+
 function ContactsSection() {
   return (
     <section id="contacts" className="contacts sectionObserve">
@@ -419,6 +480,7 @@ export default function App() {
         <Materials />
         <InfoStrip />
         <TechSection />
+        <MetroTransMostSection />
         <ContactsSection />
       </main>
       <Footer />
