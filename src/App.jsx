@@ -11,43 +11,54 @@ const materials = [
     title: "Строительство в мире",
     text: "Глобальные вызовы и тренды отрасли",
     file: "Ситуация_в_Мировом_строительстве.png",
-    format: "PNG",
-    size: "1.6 МБ",
   },
   {
     title: "Строительство в России",
     text: "Ключевые вызовы и проблемы отрасли",
     file: "Ситуация в России.png",
-    format: "PNG",
-    size: "1.4 МБ",
   },
   {
     title: "Цифровизация отрасли",
     text: "Переход к данным, аналитике и прозрачному контролю",
     file: "Будущее строительства.png",
-    format: "PNG",
-    size: "1.4 МБ",
   },
   {
     title: "✔️ MIRA как проект",
     text: "Концепция и ценностное предложение",
     file: "MIRA промо материал.png",
-    format: "PNG",
-    size: "2.1 МБ",
   },
   {
     title: "MIRA сейчас",
     text: "Практический фундамент цифровизации",
     file: "Mira сегодня.png",
-    format: "PNG",
-    size: "1.4 МБ",
   },
   {
     title: "MIRA через 12 месяцев",
     text: "План развития и будущая архитектура системы",
     file: "12 месяцев.png",
-    format: "PNG",
-    size: "1.3 МБ",
+  },
+];
+
+const insightBlocks = [
+  {
+    label: "01 / Отраслевой контекст",
+    title: "Строительство переходит от отчетов к управлению данными",
+    text: "Проектные команды работают с растущим объемом фотофиксации, BIM-моделей, графиков, подрядчиков и контрольных точек. MIRA собирает эти сигналы в понятную управленческую картину.",
+  },
+  {
+    label: "02 / Российский рынок",
+    title: "Главный риск — разрыв между площадкой и офисом",
+    text: "Когда данные живут в разных системах и чатах, руководитель видит проблему слишком поздно. MIRA помогает быстрее находить отклонения, подтверждать факты и контролировать динамику проекта.",
+  },
+  {
+    label: "03 / Цифровизация",
+    title: "AI, BIM и аналитика работают в едином контуре",
+    text: "Система проектируется как слой над строительной реальностью: от данных на объекте до показателей для заказчика, девелопера, EPC-команды и инвестора.",
+  },
+  {
+    label: "04 / Развитие MIRA",
+    title: "От проектной концепции к промышленному мониторингу",
+    text: "MIRA развивается вокруг практических сценариев: объективный прогресс, прозрачные статусы, цифровой контроль качества и понятная аналитика для принятия решений.",
   },
 ];
 
@@ -195,6 +206,7 @@ function Benefit({ icon, title, text }) {
 
 function Materials() {
   const rowRef = useRef(null);
+  const [activeMaterial, setActiveMaterial] = useState(null);
 
   const scroll = (direction) => {
     rowRef.current?.scrollBy({
@@ -203,15 +215,23 @@ function Materials() {
     });
   };
 
+  const openMaterial = (item) => {
+    window.ym?.(109600551, "reachGoal", "open_material_preview", {
+      file: item.file,
+      title: item.title,
+    });
+    setActiveMaterial(item);
+  };
+
   return (
     <section id="materials" className="materials sectionObserve">
       <div className="sectionHead">
         <div>
-          <h2>Промоматериалы для скачивания</h2>
-          <p>Инфографика и материалы о системе MIRA</p>
+          <h2>Галерея промоматериалов</h2>
+          <p>Крупные версии схем и инфографики. Нажмите на карточку, чтобы рассмотреть детали.</p>
         </div>
         <button className="textArrow" type="button" onClick={() => scroll(1)}>
-          Смотреть все промоматериалы <ArrowRightIcon />
+          Листать галерею <ArrowRightIcon />
         </button>
       </div>
 
@@ -221,50 +241,90 @@ function Materials() {
         </button>
         <div className="materialRow" ref={rowRef}>
           {materials.map((item, index) => (
-            <MaterialCard item={item} index={index} key={item.file} />
+            <MaterialCard item={item} index={index} key={item.file} onOpen={openMaterial} />
           ))}
         </div>
         <button className="roundNav right" type="button" onClick={() => scroll(1)} aria-label="Прокрутить вправо">
           <ChevronRightIcon />
         </button>
       </div>
+      {activeMaterial && <MaterialLightbox item={activeMaterial} onClose={() => setActiveMaterial(null)} />}
     </section>
   );
 }
 
-function MaterialCard({ item, index }) {
-  const handleDownload = () => {
-    window.ym?.(109600551, "reachGoal", "download_material", {
-      file: item.file,
-      title: item.title,
-      format: item.format,
-    });
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: "download_material",
-      file: item.file,
-      title: item.title,
-      format: item.format,
-    });
-  };
-
+function MaterialCard({ item, index, onOpen }) {
   return (
-    <article className="materialCard" style={{ "--delay": `${index * 70}ms` }}>
+    <button className="materialCard" type="button" style={{ "--delay": `${index * 70}ms` }} onClick={() => onOpen(item)}>
       <div className="preview">
         <img src={asset(item.file)} alt={item.title} loading="lazy" />
       </div>
       <div className="cardBody">
         <h3>{item.title}</h3>
         <p>{item.text}</p>
-        <div className="cardMeta">
-          <span>{item.format}</span>
-          <span>{item.size}</span>
-        </div>
-        <a className="downloadButton" href={asset(item.file)} download={item.file} onClick={handleDownload} aria-label={`Скачать ${item.title}`}>
-          <DownloadIcon />
-        </a>
+        <span className="expandBadge">Увеличить <ArrowRightIcon /></span>
       </div>
-    </article>
+    </button>
+  );
+}
+
+function MaterialLightbox({ item, onClose }) {
+  useEffect(() => {
+    const handleKey = (event) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.body.classList.add("modalOpen");
+    window.addEventListener("keydown", handleKey);
+    return () => {
+      document.body.classList.remove("modalOpen");
+      window.removeEventListener("keydown", handleKey);
+    };
+  }, [onClose]);
+
+  return (
+    <div className="lightboxBackdrop" role="presentation" onClick={onClose}>
+      <div className="lightboxDialog" role="dialog" aria-modal="true" aria-label={item.title} onClick={(event) => event.stopPropagation()}>
+        <div className="lightboxHeader">
+          <div>
+            <span>Промоматериал</span>
+            <h3>{item.title}</h3>
+          </div>
+          <button className="lightboxClose" type="button" onClick={onClose} aria-label="Закрыть просмотр">
+            <CloseIcon />
+          </button>
+        </div>
+        <div className="lightboxImageWrap">
+          <img src={asset(item.file)} alt={item.title} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function InsightBlocks() {
+  return (
+    <section className="insights sectionObserve" id="insights">
+      <div className="insightIntro">
+        <span className="eyebrow">Зачем это нужно</span>
+        <h2>Ключевые задачи, которые закрывает MIRA</h2>
+        <p>
+          Система помогает перевести строительный контроль из разрозненных отчетов в прозрачный контур данных:
+          от фактов на площадке до решений руководителя проекта.
+        </p>
+      </div>
+      <div className="insightGrid">
+        {insightBlocks.map((item) => (
+          <article className="insightCard" key={item.label}>
+            <span>{item.label}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -391,7 +451,7 @@ function MetroTransMostSection() {
         </article>
         <article>
           <strong>BIM</strong>
-          <span>отдел информационного моделирования</span>
+          <span>свой отдел, разрабатывающий международный стандарт</span>
         </article>
       </div>
     </section>
@@ -485,10 +545,11 @@ export default function App() {
       <Header activeSection={activeSection} />
       <main id="top">
         <Hero />
-        <Materials />
         <InfoStrip />
         <TechSection />
         <MetroTransMostSection />
+        <InsightBlocks />
+        <Materials />
         <ContactsSection />
       </main>
       <Footer />
@@ -496,10 +557,10 @@ export default function App() {
   );
 }
 
-function DownloadIcon() {
+function CloseIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
