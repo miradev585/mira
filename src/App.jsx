@@ -360,16 +360,18 @@ function MetroTransMostSection() {
           <div className="quotePortrait">
             <img src={asset("ildar.jpg")} alt="Ильдар Ильдусович Юсупов" />
           </div>
-          <div className="quoteMark">MIRA</div>
-          <blockquote>
-            MIRA разрабатывается на базе экспертизы МетроТрансМост - инженерной компании с практическим опытом
-            проектирования и реализации сложных инфраструктурных объектов. Это позволяет создавать продукт,
-            который решает реальные управленческие задачи строительства
-          </blockquote>
-          <div className="quoteAuthor">
-            <strong>Ильдар Ильдусович Юсупов</strong>
-            <span>Основатель MIRA</span>
-            <span>Генеральный директор МетроТрансМост</span>
+          <div className="quoteContent">
+            <div className="quoteMark">MIRA</div>
+            <blockquote>
+              MIRA разрабатывается на базе экспертизы МетроТрансМост - инженерной компании с практическим опытом
+              проектирования и реализации сложных инфраструктурных объектов. Это позволяет создавать продукт,
+              который решает реальные управленческие задачи строительства
+            </blockquote>
+            <div className="quoteAuthor">
+              <strong>Ильдар Ильдусович Юсупов</strong>
+              <span>Основатель MIRA</span>
+              <span>Генеральный директор МетроТрансМост</span>
+            </div>
           </div>
         </div>
       </div>
