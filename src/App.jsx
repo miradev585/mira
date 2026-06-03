@@ -70,9 +70,14 @@ const stats = [
 ];
 
 const BASE_URL = import.meta.env.BASE_URL;
+const PROMO_ASSET_VERSION = "20260603-1704";
 
 function asset(file) {
   return `${BASE_URL}${encodeURI(file)}`;
+}
+
+function promoAsset(file) {
+  return `${asset(file)}?v=${PROMO_ASSET_VERSION}`;
 }
 
 function Logo({ compact = false }) {
@@ -270,7 +275,7 @@ function MaterialCard({ item, index, onOpen }) {
   return (
     <article className="materialCard" style={{ "--delay": `${index * 70}ms` }}>
       <button className="preview previewButton" type="button" onClick={() => onOpen(item)} aria-label={`Увеличить ${item.title}`}>
-        <img src={asset(item.file)} alt={item.title} loading="lazy" />
+        <img src={promoAsset(item.file)} alt={item.title} loading="lazy" />
       </button>
       <div className="cardBody">
         <h3>{item.title}</h3>
@@ -279,7 +284,7 @@ function MaterialCard({ item, index, onOpen }) {
           <button className="expandBadge" type="button" onClick={() => onOpen(item)}>
             Увеличить <ArrowRightIcon />
           </button>
-          <a className="downloadBadge" href={asset(item.file)} download={item.file} onClick={handleDownload} aria-label={`Скачать ${item.title}`}>
+          <a className="downloadBadge" href={promoAsset(item.file)} download={item.file} onClick={handleDownload} aria-label={`Скачать ${item.title}`}>
             Скачать <DownloadIcon />
           </a>
         </div>
@@ -317,7 +322,7 @@ function MaterialLightbox({ item, onClose }) {
           </button>
         </div>
         <div className="lightboxImageWrap">
-          <img src={asset(item.file)} alt={item.title} />
+          <img src={promoAsset(item.file)} alt={item.title} />
         </div>
       </div>
     </div>
