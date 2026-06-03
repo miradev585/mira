@@ -71,6 +71,7 @@ const stats = [
 
 const BASE_URL = import.meta.env.BASE_URL;
 const PROMO_ASSET_VERSION = "20260603-1704";
+const GOOGLE_FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLScjOkMV-NXUbkzmtbpqIyP9B89OgTfJ3amtwCGKIhwsFHiC0g/formResponse";
 
 function asset(file) {
   return `${BASE_URL}${encodeURI(file)}`;
@@ -484,6 +485,15 @@ function MetroTransMostSection() {
 }
 
 function ContactsSection() {
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleContactSubmit = () => {
+    window.ym?.(109600551, "reachGoal", "submit_contact_form");
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: "submit_contact_form" });
+    setSubmitted(true);
+  };
+
   return (
     <section id="contacts" className="contacts sectionObserve">
       <div className="contactsInfo">
@@ -501,18 +511,33 @@ function ContactsSection() {
           <strong>Заявка на связь</strong>
         </div>
         <div className="formFrameBody">
-          <iframe
-            className="googleFormFrame"
-            src="https://docs.google.com/forms/d/e/1FAIpQLScjOkMV-NXUbkzmtbpqIyP9B89OgTfJ3amtwCGKIhwsFHiC0g/viewform?embedded=true"
-            frameBorder="0"
-            title="Форма обратной связи MIRA"
-            width="100%"
-            height="1180"
-            marginHeight="0"
-            marginWidth="0"
-          >
-            Загрузка…
-          </iframe>
+          <form className="contactForm" action={GOOGLE_FORM_ACTION} method="POST" target="googleFormSubmitFrame" onSubmit={handleContactSubmit}>
+            <div className="formGrid">
+              <label className="contactField">
+                <span>Ваше ФИО <b>*</b></span>
+                <input name="entry.2018584092" type="text" autoComplete="name" placeholder="Иван Иванов" required />
+              </label>
+              <label className="contactField">
+                <span>Компания <b>*</b></span>
+                <input name="entry.1044786009" type="text" autoComplete="organization" placeholder="Название компании" required />
+              </label>
+              <label className="contactField contactFieldWide">
+                <span>Как с вами связаться <b>*</b></span>
+                <input name="entry.2070318254" type="text" autoComplete="email" placeholder="Телефон или e-mail" required />
+              </label>
+              <label className="contactField contactFieldWide">
+                <span>Вопрос или предложение <b>*</b></span>
+                <textarea name="entry.44090073" rows="4" placeholder="Коротко опишите, что вас интересует" required />
+              </label>
+            </div>
+            <input type="hidden" name="fvv" value="1" />
+            <input type="hidden" name="pageHistory" value="0" />
+            <button className="submitButton" type="submit">
+              Отправить заявку <ArrowRightIcon />
+            </button>
+            {submitted && <p className="submitNotice">Заявка отправлена. Команда MIRA свяжется с вами по указанным контактам.</p>}
+          </form>
+          <iframe className="hiddenSubmitFrame" name="googleFormSubmitFrame" title="Служебная отправка формы" />
         </div>
       </div>
     </section>
