@@ -449,11 +449,9 @@ main {
   background: var(--white);
   box-shadow: 0 10px 30px rgba(10, 30, 58, 0.06);
   color: inherit;
-  font: inherit;
   padding: 0;
   text-align: left;
   scroll-snap-align: start;
-  appearance: none;
   transition:
     transform 260ms ease,
     box-shadow 260ms ease,
@@ -469,8 +467,11 @@ main {
 }
 
 .materialCard:focus-visible,
+.previewButton:focus-visible,
 .roundNav:focus-visible,
 .textArrow:focus-visible,
+.expandBadge:focus-visible,
+.downloadBadge:focus-visible,
 .lightboxClose:focus-visible {
   outline: 3px solid rgba(0, 166, 255, 0.34);
   outline-offset: 3px;
@@ -481,6 +482,11 @@ main {
   overflow: hidden;
   height: 146px;
   background: var(--panel);
+}
+
+.previewButton {
+  width: 100%;
+  padding: 0;
 }
 
 .preview img {
@@ -505,7 +511,7 @@ main {
 
 .cardBody {
   display: flex;
-  min-height: 172px;
+  min-height: 186px;
   flex-direction: column;
   align-items: flex-start;
   padding: 18px 18px 20px;
@@ -527,31 +533,54 @@ main {
   line-height: 1.45;
 }
 
-.expandBadge {
+.materialActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+.expandBadge,
+.downloadBadge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 7px;
   min-height: 34px;
-  margin-top: auto;
   padding: 0 12px;
   border-radius: 10px;
-  background: var(--soft);
-  color: var(--button);
   font-size: 12px;
   font-weight: 800;
+  line-height: 1;
   transition:
     background 220ms ease,
     color 220ms ease,
     transform 220ms ease;
 }
 
-.expandBadge svg {
+.expandBadge {
+  background: var(--button);
+  color: var(--white);
+}
+
+.downloadBadge {
+  border: 1px solid rgba(0, 132, 255, 0.18);
+  background: var(--soft);
+  color: var(--button);
+}
+
+.expandBadge svg,
+.downloadBadge svg {
   width: 15px;
   height: 15px;
 }
 
-.materialCard:hover .expandBadge {
-  background: var(--button);
+.expandBadge:hover,
+.downloadBadge:hover {
+  background: var(--blue);
+  border-color: var(--blue);
   color: var(--white);
   transform: translateY(-2px);
 }

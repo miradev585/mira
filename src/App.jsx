@@ -254,17 +254,37 @@ function Materials() {
 }
 
 function MaterialCard({ item, index, onOpen }) {
+  const handleDownload = () => {
+    window.ym?.(109600551, "reachGoal", "download_material", {
+      file: item.file,
+      title: item.title,
+    });
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "download_material",
+      file: item.file,
+      title: item.title,
+    });
+  };
+
   return (
-    <button className="materialCard" type="button" style={{ "--delay": `${index * 70}ms` }} onClick={() => onOpen(item)}>
-      <div className="preview">
+    <article className="materialCard" style={{ "--delay": `${index * 70}ms` }}>
+      <button className="preview previewButton" type="button" onClick={() => onOpen(item)} aria-label={`Увеличить ${item.title}`}>
         <img src={asset(item.file)} alt={item.title} loading="lazy" />
-      </div>
+      </button>
       <div className="cardBody">
         <h3>{item.title}</h3>
         <p>{item.text}</p>
-        <span className="expandBadge">Увеличить <ArrowRightIcon /></span>
+        <div className="materialActions">
+          <button className="expandBadge" type="button" onClick={() => onOpen(item)}>
+            Увеличить <ArrowRightIcon />
+          </button>
+          <a className="downloadBadge" href={asset(item.file)} download={item.file} onClick={handleDownload} aria-label={`Скачать ${item.title}`}>
+            Скачать <DownloadIcon />
+          </a>
+        </div>
       </div>
-    </button>
+    </article>
   );
 }
 
@@ -561,6 +581,14 @@ function CloseIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function DownloadIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
