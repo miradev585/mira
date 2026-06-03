@@ -1131,7 +1131,7 @@ main {
 
 .contacts {
   display: grid;
-  grid-template-columns: minmax(300px, 0.75fr) minmax(360px, 1fr);
+  grid-template-columns: minmax(300px, 0.64fr) minmax(520px, 1.16fr);
   align-items: start;
   gap: 28px;
   padding-top: 10px;
@@ -1178,7 +1178,7 @@ main {
 
 .formShell {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   min-height: 0;
   padding: 14px;
   background:
@@ -1231,7 +1231,7 @@ main {
 .googleFormFrame {
   display: block;
   width: 100%;
-  min-height: 882px;
+  min-height: 1180px;
   border: 0;
   background: var(--white);
 }
@@ -1686,7 +1686,7 @@ main {
   }
 
   .googleFormFrame {
-    min-height: 940px;
+    min-height: 1260px;
   }
 
   .lightboxBackdrop {

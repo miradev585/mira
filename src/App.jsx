@@ -507,7 +507,7 @@ function ContactsSection() {
             frameBorder="0"
             title="Форма обратной связи MIRA"
             width="100%"
-            height="882"
+            height="1180"
             marginHeight="0"
             marginWidth="0"
           >
