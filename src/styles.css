@@ -662,6 +662,8 @@ main {
   grid-template-columns: minmax(0, 0.92fr) minmax(470px, 1fr);
   gap: 18px;
   align-items: stretch;
+  overflow: hidden;
+  padding: 16px;
   border: 1px solid rgba(220, 232, 245, 0.96);
   border-radius: 18px;
   background:
@@ -678,7 +680,7 @@ main {
 }
 
 .mtmostCopy {
-  padding: clamp(28px, 3.5vw, 42px);
+  padding: clamp(22px, 3vw, 36px);
 }
 
 .mtmostCopy h2 {
@@ -739,7 +741,7 @@ main {
   align-items: center;
   gap: clamp(20px, 2.3vw, 30px);
   min-height: 100%;
-  margin: 16px;
+  margin: 0;
   padding: clamp(22px, 2.8vw, 32px);
   overflow: hidden;
   border: 1px solid rgba(0, 166, 255, 0.16);
@@ -1369,7 +1371,7 @@ main {
   .mtmostQuote {
     grid-template-columns: 1fr;
     gap: 22px;
-    margin: 12px;
+    margin: 0;
   }
 
   .quotePortrait {
