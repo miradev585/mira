@@ -500,10 +500,12 @@ function ContactsSection() {
         <span className="eyebrow">Контакты</span>
         <h2>Обратная связь</h2>
         <p>
-          Оставьте заявку через форму, и команда MIRA свяжется с вами. Для прямого обращения:
-          {" "}
-          <a href="mailto:miradev585@gmail.com">miradev585@gmail.com</a>
+          Оставьте заявку через форму, и команда MIRA свяжется с вами. Для прямого обращения используйте контакты ниже.
         </p>
+        <div className="directContacts" aria-label="Прямые контакты">
+          <a href="mailto:mtmost@mtmost.ru">mtmost@mtmost.ru</a>
+          <a href="tel:+74957762040">+7 (495) 776-20-40</a>
+        </div>
       </div>
       <div className="formShell">
         <div className="formFrameHeader">
@@ -561,7 +563,7 @@ function Footer() {
           МетроТрансМост
         </a>
       </nav>
-      <a className="footerMail" href="mailto:miradev585@gmail.com">miradev585@gmail.com</a>
+      <a className="footerMail" href="mailto:mtmost@mtmost.ru">mtmost@mtmost.ru</a>
     </footer>
   );
 }

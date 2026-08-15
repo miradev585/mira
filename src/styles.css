@@ -1176,6 +1176,42 @@ main {
   color: var(--blue);
 }
 
+.directContacts {
+  display: grid;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.directContacts a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0 14px;
+  border: 1px solid rgba(0, 132, 255, 0.16);
+  border-radius: 12px;
+  background: rgba(230, 242, 255, 0.72);
+  box-shadow: 0 10px 24px rgba(0, 132, 255, 0.08);
+  color: var(--button);
+  font-size: 14px;
+  font-weight: 800;
+  transition:
+    background 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    color 220ms ease,
+    transform 220ms ease;
+}
+
+.directContacts a:hover {
+  border-color: rgba(0, 166, 255, 0.38);
+  background: var(--white);
+  box-shadow: 0 14px 28px rgba(0, 132, 255, 0.14);
+  color: var(--blue);
+  transform: translateY(-2px);
+}
+
 .formShell {
   position: relative;
   overflow: hidden;
